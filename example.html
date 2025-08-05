@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Free Block Engine</title>
+  <link rel="stylesheet" href="example.css" />
+</head>
+<body>
+  <div class="toolbar">
+    <button onclick="createNewBlock()">New Block</button>
+    <div class="link-type-selector">
+      <select id="linkTypeSelect">
+        <option value="single">→ Single</option>
+        <option value="reverse">← Reverse</option>
+        <option value="double">↔ Double</option>
+      </select>
+      <button onclick="linkSelectedBlocks()">Link Selected</button>
+    </div>
+    <button onclick="arrangeBlocks()">Auto Arrange</button>
+    <div class="separator"></div>
+    <div class="view-toggle">
+      <button id="freeViewBtn" class="active" onclick="setViewMode('free')">Free</button>
+      <button id="gridViewBtn" onclick="setViewMode('grid')">Grid</button>
+    </div>
+    <div class="separator"></div>
+    <input type="text" id="searchInput" placeholder="Search blocks..." onkeyup="searchBlocks()">
+    <div class="separator"></div>
+    <button onclick="exportData()">Export</button>
+    <button onclick="importData()">Import</button>
+    <input type="file" id="importFile" style="display: none;" accept=".json" onchange="handleImport(event)">
+    <div id="status"></div>
+  </div>
+  
+  <div id="blocks-container"></div>
+  
+  <div class="help-text">
+    <strong>Tips:</strong><br>
+    • Double-click on arrows to edit link direction<br>
+    • Ctrl+click to select multiple blocks<br>
+    • Drag blocks to reposition them
+  </div>
+
+  <script src="blockEngine.js"></script>
+  <script src="blockRenderer.js"></script>
+  <script src="example.js"></script>
+  
+</body>
+</html>
